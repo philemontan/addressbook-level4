@@ -97,8 +97,8 @@ public class BrowserPanel extends UiPart<Region> {
         loadPersonPage(event.getNewSelection().person);
     }
 
-    /**
-     * Event listener for Google Auth Requests Events
+    /**Event listener for Google Auth Requests Events
+     * Fires an event when authentication succeeds and GoogleCredential is set up correctly
      * @param event
      */
     @Subscribe
@@ -112,21 +112,26 @@ public class BrowserPanel extends UiPart<Region> {
         browser.getEngine().locationProperty().addListener(((observable, oldValue, newValue) -> {
             currentUrl = (String) newValue;
             if (authSuccessUrlDetected(currentUrl)) {
-                EventsCenter.getInstance().post(new GoogleAuthSuccessEvent());
+                setGoogleCredentials(extractAuthCode(currentUrl));
             }
         }));
     }
 
-    /**
-     * Event listener for Google Auth Success Events
-     * @param event
+    /**Helper method: Sets up GoogleCredentials within the GoogleApiAuth service, and fires an event on success
+     * @param authCode the auth code extracted from the current url
      */
-    @Subscribe
-    private void handleGoogleAuthSucessEvent(GoogleAuthSuccessEvent event) {
-        String authCode = currentUrl.split("=")[1].split("&")[0];
+    private void setGoogleCredentials(String authCode) {
         if (authService.setupCredentials(authCode)) {
             EventsCenter.getInstance().post(new GoogleApiAuthServiceCredentialsSetupCompleted());
         }
+    }
+
+    /**Helper method: Extracts the auth code based on a set regex
+     * @param currentUrl a snapshot of the URL
+     * @return the extracted authentication code
+     */
+    private String extractAuthCode(String currentUrl) {
+        return currentUrl.split("=")[1].split("&")[0];
     }
 
     private boolean authSuccessUrlDetected(String currentUrl) {
