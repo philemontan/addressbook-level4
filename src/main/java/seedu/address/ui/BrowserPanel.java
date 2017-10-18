@@ -16,7 +16,6 @@ import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.logic.GoogleApiAuthServiceCredentialsSetupCompleted;
 import seedu.address.commons.events.logic.GoogleAuthRequestEvent;
-import seedu.address.commons.events.logic.GoogleAuthSuccessEvent;
 import seedu.address.commons.events.ui.FindLocationRequestEvent;
 import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
 import seedu.address.model.person.ReadOnlyPerson;
