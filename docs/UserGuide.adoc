@@ -298,23 +298,22 @@ Format: the kbd:[&uarr;] and kbd:[&darr;] arrows will paste the previous and nex
 
 === Importing contacts: `import`
 
-Imports contacts to DoC from Google Contacts. +
+Import your contacts to DoC from Google Contacts. +
 Format: `import`
 
 WARNING: Number of contacts imported is limited to 1000 +
 
-
 **Steps** +
-**1.** Enter the `import` command +
-**2.** Log in to your Google account on the in-built browser +
+**1.** Enter the `import` command, and wait for the `Browser panel` to navigate to the Google's login page +
+**2.** Log in to your Google account on the `Browser panel` +
 **3.** Grant permission to DoC to access your contacts +
 
-**Picture guide**
+**Visual guide**
 
 image::importpic.png[width="1000"]
 
 You can enter your credentials and grant permission to DoC to access your Google contacts, as highlighted by the
-red boxes in the picture above.
+red boxes in the images above.
 
 === Listing all persons : `list`
 
